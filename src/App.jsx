@@ -21,6 +21,7 @@ function App() {
     setBreeds(response.items)
   }
 
+    
   useEffect( () => {
     getDogs()
     }, []);
