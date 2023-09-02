@@ -10,7 +10,7 @@ function App() {
   const {getDogs} = useContentful()
 
   useEffect(()=>{
-    getDogs().then((response)=> setBreeds(response))
+    getDogs().then((response)=> console.log(response))
     
   })
 
