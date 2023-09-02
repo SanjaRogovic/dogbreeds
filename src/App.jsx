@@ -9,7 +9,7 @@ import * as contentful from "contentful";
 function App() {
   const [breeds, setBreeds] = useState([]);
 
-<<<<<<< HEAD
+
   const getDogs = async () => {
     const client = contentful.createClient({
       space: "y5d9wlvfzf96",
@@ -20,11 +20,7 @@ function App() {
     // console.log(response)
     setBreeds(response.items)
   }
-=======
-  useEffect(()=>{
-    getDogs().then((response)=> console.log(response))
->>>>>>> a1c9c1a1a790592e2b9fe1995eab8713678b816a
-    
+
   useEffect( () => {
     getDogs()
     }, []);
