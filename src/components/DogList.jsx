@@ -1,8 +1,16 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
-const DogList = () => {
+const DogList = ({breeds}) => {
+
+  const {index, breeds} = useParams();
+
   return (
-    <div>DogList</div>
+
+    <div>
+      {breeds.fields.breedName}
+        {index}
+    </div>
   )
 }
 
