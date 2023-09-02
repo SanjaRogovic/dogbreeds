@@ -8,13 +8,15 @@ import Card  from 'react-bootstrap/Card'
 
 const Homepage = () => {
     const [breeds, setBreeds] = useState([]);
-    const [img, setImg] = useState("");
+
+    const space = import.meta.env.VITE_SOME_SPACE;
+    const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
 
     const getDogs = async () => {
         const client = contentful.createClient({
-          space: "y5d9wlvfzf96",
-          accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
+          space: space,
+          accessToken: accessToken,
         });
     
         const response = await client.getEntries()
@@ -24,7 +26,7 @@ const Homepage = () => {
       useEffect( () => {
         getDogs()
         }, []);
-        console.log(breeds)
+        // console.log(breeds)
 
   return (
     <>
@@ -44,7 +46,7 @@ const Homepage = () => {
               variant="bottom" className='cardImg'
               src={breeds.fields.dogImg[0].fields.file.url}
             />
-              {/* <Button variant="primary">Read more...</Button> */}
+              
             </Card.Body>
           </Card>
         );

@@ -8,20 +8,22 @@ const DogList = (props) => {
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
   const [about, setAbout] = useState("");
-  const [ratingSport, setRatingSport] = useState()
-  const [affectionLevel, setAffectionLevel] = useState()
+  const [ratingSport, setRatingSport] = useState(0)
+  const [affectionLevel, setAffectionLevel] = useState(0)
 
   const { index } = useParams();
-  console.log(index);
+
+
+  const space = import.meta.env.VITE_SOME_SPACE;
+  const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
   const dogFetch = async () => {
     const client = contentful.createClient({
-      space: "y5d9wlvfzf96",
-      accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
+      space: space,
+      accessToken: accessToken,
     });
 
     const response = await client.getEntry(index);
-    console.log(response);
     setName(response.fields.breedName);
     setImg(response.fields.dogImg[1].fields.file.url);
     setAbout(response.fields.dogAbout);
@@ -33,6 +35,7 @@ const DogList = (props) => {
     dogFetch();
   }, []);
 
+
   return (
     <div>
       <Card style={{ width: "30rem" }}>
@@ -43,9 +46,9 @@ const DogList = (props) => {
             {about} <br />
             <br />
             Sport Need:
-            <Rating name="read-only" value={`${ratingSport}`} readOnly /> <br />
+            <Rating name="read-only" value={ratingSport} readOnly /> <br />
             Affectionate Level:
-            <Rating name="read-only2" value={`${affectionLevel}`} readOnly />
+            <Rating name="read-only2" value={affectionLevel} readOnly />
           </Card.Text>
         </Card.Body>
       </Card>
