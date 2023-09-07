@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Rating from '@mui/material/Rating';
 import * as ReactBootstrap from "react-bootstrap";
 
+
 const DogList = (props) => {
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
@@ -61,6 +62,7 @@ const DogList = (props) => {
         </Card.Body>
       </Card>
     </div>
+    
   );
 };
 
