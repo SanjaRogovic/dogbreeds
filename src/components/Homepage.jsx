@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import * as contentful from "contentful";
-import { Link } from 'react-router-dom'
 import Card  from 'react-bootstrap/Card'
+import { Link } from 'react-router-dom'
 import * as ReactBootstrap from "react-bootstrap";
+
 
 
 
@@ -33,14 +34,14 @@ const Homepage = () => {
 
   return (
     <>
-      <h1>Dog Breeds</h1>
+      <h1 className='header'>Dog Breeds</h1>
       {loading && (
           <ReactBootstrap.Spinner animation="border" variant="secondary" />
         )}
       <div className="cardContainer">     
         {breeds.map((breeds, index) => {
           return (
-            <Card style={{ width: "18rem" }} key={index}>
+            <Card className='card' key={index}>
               <Card.Body>
                 <Card.Title>
                   <Link key={index} to={`/doglist/${breeds.sys.id}`}>

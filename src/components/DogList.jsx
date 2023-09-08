@@ -47,21 +47,21 @@ const DogList = (props) => {
 
   return (
     <div>
-      <Card style={{ width: "30rem" }}>
-        <Card.Img variant="top" src={img} style={{ height: "250px" }} />
-        <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>
-            {about} <br />
-            <br />
-            Sport Need:
-            <Rating name="read-only" value={ratingSport} readOnly /> <br />
-            Affectionate Level:
-            <Rating name="read-only2" value={affectionLevel} readOnly />
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
+    <Card className='dogCard'>
+      <Card.Img variant="top" src={img} style={{ height: "250px" }} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+          {about} <br />
+          <br />
+          Sport Need:
+          <Rating name="read-only" value={ratingSport} readOnly /> <br />
+          Affectionate Level:
+          <Rating name="read-only2" value={affectionLevel} readOnly />
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  </div>
     
   );
 };
