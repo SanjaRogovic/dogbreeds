@@ -45,35 +45,29 @@ const Homepage = () => {
       {loading ? (
         <div>
           <ReactBootstrap.Spinner animation="border" variant="light" />
-          <p className='paragraphContent'>Content loading ...</p>
+          <p className="paragraphContent">Content loading ...</p>
         </div>
       ) : null}
       <div className="cardContainer">
         {breeds.map((breeds, index) => {
           return (
             <Card className="card" key={index}>
-
-            <Link className='link' key={index} to={`/doglist/${breeds.sys.id}`}>    
-              <Card.Body>
-
-              <Card.Title >
-                  
+             
+                <Card.Body>
+                <Card.Title >
+                  <Link  key={index} to={`/doglist/${breeds.sys.id}`} className="stretched-link" style={{color:"#3c2105"}}>
                     {breeds.fields.breedName}
-                   
+                    <br />
+                  </Link>
                 </Card.Title>
-                <Card.Img
-                  variant="bottom"
-                  className="cardImg"
-                  src={breeds.fields.dogImg[0].fields.file.url}
-                />
-              </Card.Body>
-              
-                    
-                   
-              </Link>
-
-
                 
+                  <Card.Img
+                    variant="bottom"
+                    className="cardImg"
+                    src={breeds.fields.dogImg[0].fields.file.url}
+                  />
+                </Card.Body>
+              
             </Card>
           );
         })}
