@@ -52,20 +52,22 @@ const Homepage = () => {
         {breeds.map((breeds, index) => {
           return (
             <Card className="card" key={index}>
-              <Link
-                className="link"
-                key={index}
-                to={`/doglist/${breeds.sys.id}`}
-              >
+             
                 <Card.Body>
-                  <Card.Title>{breeds.fields.breedName}</Card.Title>
+                <Card.Title >
+                  <Link  key={index} to={`/doglist/${breeds.sys.id}`} className="stretched-link" style={{color:"#3c2105"}}>
+                    {breeds.fields.breedName}
+                    <br />
+                  </Link>
+                </Card.Title>
+                
                   <Card.Img
                     variant="bottom"
                     className="cardImg"
                     src={breeds.fields.dogImg[0].fields.file.url}
                   />
                 </Card.Body>
-              </Link>
+              
             </Card>
           );
         })}

@@ -62,9 +62,9 @@
   font-size: 2.2rem !important;
 }
 
-.link{
+/* .streched-link{
   color: #3c2105 !important;
-}
+} */
 
 .rating {
   display: flex;
@@ -94,7 +94,7 @@
 
 .cardImg{
   height: 80%;
-  width: 40%;
+  width: auto;
   border-radius: 3%;
 }
 
