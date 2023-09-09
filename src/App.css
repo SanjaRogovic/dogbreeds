@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap');
+
 #root {
   max-width: 1200px;
   margin: 0 auto;
@@ -5,6 +8,24 @@
   text-align: center;
 } 
 
+#mainBody{
+  background-color: #333131;
+  background-image: url("./assets/Dog-Paws.png");
+}
+
+.header{
+  font-family: 'Vast Shadow', serif;
+  font-size: 7rem;
+  color: #faaf00 !important;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.paragraphContent{
+  color:white;
+  font-weight: bold;
+  font-size: 20px;
+}
 .cardContainer{
   display: grid;
   gap: 2rem;
@@ -12,27 +33,86 @@
 } 
 
 .card{
-  width: 18rem;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.card:hover {
+  background-color: #c7c6c3;
+}
+
+.cardBody {
+  background-color: #f2f0e9;
+}
+
+.cardTitle{
+  color: #faaf00 !important;
+  text-shadow: -1px 0 rgba(39, 23, 9, 0.463), 0 1px rgba(39, 23, 9, 0.463), 1px 0 rgba(39, 23, 9, 0.463), 0 -1px rgba(39, 23, 9, 0.463);
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 2.2rem !important;
+}
+
+.link{
+  color: #3c2105 !important;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  padding-bottom: 5%;
+
+}
+.about {
+  text-align: justify;
+  text-justify: inter-word;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.dogImage {
+  width: inherit;
+  height: auto;
 }
 
 .dogCard{
-  width: 30rem;
+  width: 45rem;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
 .cardImg{
-  height: 87%;
-  width: 45%;
+  height: 80%;
+  width: 40%;
   border-radius: 3%;
 }
 
-.header{
-  padding-bottom: 8%;
-  font-size: calc(1rem + 3vw);
-} 
+.all{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-@media (max-width: 1000px) {
+
+.dogBreedsHeader {
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: solid;
+  border-width: 10px;
+  border-color: #faaf00;
+}
+
+@media (max-width: 1024px) {
   .cardContainer{
     grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .header{
+    font-size: 5rem;
+    padding-bottom: 5%;
   }
 }
 
@@ -47,11 +127,11 @@
   }
 
   .header{
-    font-size: calc(1.5rem + 2vw);
+    font-size: calc(2rem + 2vw);
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 750px) {
   .dogCard{
     flex-direction: column;
     align-items: center;

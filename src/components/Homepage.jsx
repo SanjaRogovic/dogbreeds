@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 import * as ReactBootstrap from "react-bootstrap";
 
 
-
-
 const Homepage = () => {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,15 +14,21 @@ const Homepage = () => {
   // const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
   const getDogs = async () => {
-    const client = contentful.createClient({
-      space: "y5d9wlvfzf96",
-      accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
-    });
-
-    const response = await client.getEntries();
-    setLoading(true);
-    setBreeds(response.items);
-    setLoading(false)
+    try{
+      setLoading(true);
+      const client = contentful.createClient({
+        space: "y5d9wlvfzf96",
+        accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
+      });
+      const response = await client.getEntries(); 
+      setBreeds(response.items);
+    }
+    catch (error){
+      console.error
+    }
+    finally {
+      setLoading(false)
+    }
   };
 
   useEffect(() => {
@@ -33,18 +37,24 @@ const Homepage = () => {
   // console.log(breeds)
 
   return (
-    <>
-      <h1 className='header'>Dog Breeds</h1>
-      {loading && (
-          <ReactBootstrap.Spinner animation="border" variant="secondary" />
-        )}
-      <div className="cardContainer">     
+    <div className="all">
+    <div className="headerBckgrnd">
+      {/* <img className='dogBreedsHeader' src="https://i.postimg.cc/Sxc45VCp/head.png" alt="Header" style={{width:"90%"}}/> */}
+    <h1 className='header'>Dog Breeds</h1>
+    </div>
+      {loading ? (
+        <div>
+          <ReactBootstrap.Spinner animation="border" variant="light" />
+          <p className='paragraphContent'>Content loading ...</p>
+        </div>
+      ) : null}
+      <div className="cardContainer">
         {breeds.map((breeds, index) => {
           return (
-            <Card className='card' key={index}>
+            <Card className="card" key={index}>
               <Card.Body>
-                <Card.Title>
-                  <Link key={index} to={`/doglist/${breeds.sys.id}`}>
+                <Card.Title >
+                  <Link className='link' key={index} to={`/doglist/${breeds.sys.id}`}>
                     {breeds.fields.breedName}
                     <br />
                   </Link>
@@ -59,7 +69,7 @@ const Homepage = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
