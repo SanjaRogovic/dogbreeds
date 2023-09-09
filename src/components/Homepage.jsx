@@ -10,15 +10,15 @@ const Homepage = () => {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // const space = import.meta.env.VITE_SOME_SPACE;
-  // const accessToken = import.meta.env.VITE_SOME_TOKEN;
+  const space = import.meta.env.VITE_SOME_SPACE;
+  const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
   const getDogs = async () => {
     try{
       setLoading(true);
       const client = contentful.createClient({
-        space: "y5d9wlvfzf96",
-        accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
+        space: space,
+        accessToken: accessToken,
       });
       const response = await client.getEntries(); 
       setBreeds(response.items);
@@ -39,7 +39,6 @@ const Homepage = () => {
   return (
     <div className="all">
     <div className="headerBckgrnd">
-      {/* <img className='dogBreedsHeader' src="https://i.postimg.cc/Sxc45VCp/head.png" alt="Header" style={{width:"90%"}}/> */}
     <h1 className='header'>Dog Breeds</h1>
     <hr className='line'/>
     </div>

@@ -2,7 +2,10 @@ import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import * as contentful from "contentful";
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Rating from '@mui/material/Rating';
+import { Link } from 'react-router-dom'
+
 import * as ReactBootstrap from "react-bootstrap";
 
 
@@ -16,15 +19,15 @@ const DogList = (props) => {
 
   const { index } = useParams();
 
-  // const space = import.meta.env.VITE_SOME_SPACE;
-  // const accessToken = import.meta.env.VITE_SOME_TOKEN;
+  const space = import.meta.env.VITE_SOME_SPACE;
+  const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
   const dogFetch = async () => {
     try{
       setLoading(true);
       const client = contentful.createClient({
-        space: "y5d9wlvfzf96",
-        accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
+        space: space,
+        accessToken: accessToken,
       });
   
       const response = await client.getEntry(index);
@@ -53,6 +56,11 @@ const DogList = (props) => {
   return (
     
     <div>
+                 <div className='buttonContainer'>
+                 <Button className="homebutton" variant="warning">
+                  <Link className='link2' key={index} to={`/`}> ←  BACK TO HOMEPAGE </Link>  
+                 </Button>
+                   </div> 
 
 {loading ? (
         <div>

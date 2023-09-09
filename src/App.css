@@ -15,18 +15,26 @@
 
 .header{
   font-family: 'Vast Shadow', serif;
+  text-shadow: -2px 0 #e9e8e2, 0 2px #e9e8e2, 2px 0 #e9e8e2, 0 -2px #e9e8e2;
+
   font-size: 7rem;
   color: #faaf00 !important;
   padding-top: 5%;
   padding-bottom: 0.5rem;
 }
+
+
+
 .headerBckgrnd {
   padding-bottom: 5%;
 }
+
 .line{
   border: 3px solid #faaf00;
   border-radius: 5px;
   opacity: 1;
+  box-shadow: -1px 0 #e9e8e2, 0 1px #e9e8e2, 1px 0 #e9e8e2, 0 -1px #e9e8e2;
+
 }
 
 .paragraphContent{
@@ -42,6 +50,7 @@
 
 .card{
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  
 }
 
 .card:hover {
@@ -62,6 +71,23 @@
 
 .link{
   color: #3c2105 !important;
+}
+
+.buttonContainer {
+  padding-bottom: 5%;
+}
+.homebutton{
+  width: 100%;
+}
+.homebutton:hover{
+  opacity: 0.7;
+
+
+}
+
+.link2 {
+  color: #3c2105 !important;
+font-size: 120%;
 }
 
 .rating {
@@ -91,8 +117,7 @@
 }
 
 .cardImg{
-  height: 80%;
-  width: 40%;
+  min-height: 240px;
   border-radius: 3%;
 }
 
