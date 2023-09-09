@@ -41,6 +41,7 @@ const Homepage = () => {
     <div className="headerBckgrnd">
       {/* <img className='dogBreedsHeader' src="https://i.postimg.cc/Sxc45VCp/head.png" alt="Header" style={{width:"90%"}}/> */}
     <h1 className='header'>Dog Breeds</h1>
+    <hr className='line'/>
     </div>
       {loading ? (
         <div>
