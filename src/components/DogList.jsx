@@ -20,22 +20,27 @@ const DogList = (props) => {
   // const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
   const dogFetch = async () => {
-    const client = contentful.createClient({
-      space: "y5d9wlvfzf96",
-      accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
-    });
+    try{
+      setLoading(true);
+      const client = contentful.createClient({
+        space: "y5d9wlvfzf96",
+        accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
+      });
+  
+      const response = await client.getEntry(index);
+      setLoading(true)
+      setName(response.fields.breedName);
+      setImg(response.fields.dogImg[1].fields.file.url);
+      setAbout(response.fields.dogAbout);
+      setRatingSport(response.fields.sportNeed);
+      setAffectionLevel(response.fields.affectionateLevel);
 
-    const response = await client.getEntry(index);
-    setLoading(true)
-    setName(response.fields.breedName);
-    setImg(response.fields.dogImg[1].fields.file.url);
-    setAbout(response.fields.dogAbout);
-    setRatingSport(response.fields.sportNeed);
-    setAffectionLevel(response.fields.affectionateLevel);
-
-    if(loading === true){
-      console.error(`Fetching data failed`)
-    } else {
+    }
+  
+    catch (error){
+      console.error
+    }
+    finally {
       setLoading(false)
     }
     
@@ -46,7 +51,16 @@ const DogList = (props) => {
   }, []);
 
   return (
+    
     <div>
+
+{loading ? (
+        <div>
+          <ReactBootstrap.Spinner animation="border" variant="light" />
+          <p className='paragraphContent'>Content loading ...</p>
+        </div>
+      ) : null}
+
     <Card className='dogCard'>
       <Card.Img className='dogImage' variant="top" src={img} />
       <Card.Body className='cardBody'>
