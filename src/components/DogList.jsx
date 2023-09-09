@@ -20,30 +20,25 @@ const DogList = (props) => {
   // const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
   const dogFetch = async () => {
-    try{
+    try {
       setLoading(true);
       const client = contentful.createClient({
         space: "y5d9wlvfzf96",
         accessToken: "oy4sUQfFIhCEhDjJJarewqCr9d5lSi9PiooSKDPAP0U",
       });
-  
+
       const response = await client.getEntry(index);
-      setLoading(true)
+      setLoading(true);
       setName(response.fields.breedName);
       setImg(response.fields.dogImg[1].fields.file.url);
       setAbout(response.fields.dogAbout);
       setRatingSport(response.fields.sportNeed);
       setAffectionLevel(response.fields.affectionateLevel);
-
+    } catch (error) {
+      console.error;
+    } finally {
+      setLoading(false);
     }
-  
-    catch (error){
-      console.error
-    }
-    finally {
-      setLoading(false)
-    }
-    
   };
 
   useEffect(() => {
@@ -51,35 +46,32 @@ const DogList = (props) => {
   }, []);
 
   return (
-    
     <div>
-
-{loading ? (
+      {loading ? (
         <div>
           <ReactBootstrap.Spinner animation="border" variant="light" />
-          <p className='paragraphContent'>Content loading ...</p>
+          <p className="paragraphContent">Content loading ...</p>
         </div>
       ) : null}
 
-    <Card className='dogCard'>
-      <Card.Img className='dogImage' variant="top" src={img} />
-      <Card.Body className='cardBody'>
-        <Card.Title className='cardTitle'>{name}</Card.Title>
-        <Card.Text className='about'>
-          {about} 
-          <br />
-          <br />
-          <div className='rating'>
-          Sport Need:
-          <Rating name="read-only" value={ratingSport} readOnly /> <br />
-          Affectionate Level:
-          <Rating name="read-only2" value={affectionLevel} readOnly />
-          </div>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  </div>
-    
+      <Card className="dogCard">
+        <Card.Img className="dogImage" variant="top" src={img} />
+        <Card.Body className="cardBody">
+          <Card.Title className="cardTitle">{name}</Card.Title>
+          <Card.Text className="about">
+            {about}
+            <br />
+            <br />
+            <div className="rating">
+              Sport Need:
+              <Rating name="read-only" value={ratingSport} readOnly /> <br />
+              Affectionate Level:
+              <Rating name="read-only2" value={affectionLevel} readOnly />
+            </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
   );
 };
 

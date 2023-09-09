@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap');
 
 #root {
@@ -20,9 +19,11 @@
   padding-top: 5%;
   padding-bottom: 0.5rem;
 }
+
 .headerBckgrnd {
   padding-bottom: 5%;
 }
+
 .line{
   border: 3px solid #faaf00;
   border-radius: 5px;
@@ -34,6 +35,7 @@
   font-weight: bold;
   font-size: 20px;
 }
+
 .cardContainer{
   display: grid;
   gap: 2rem;

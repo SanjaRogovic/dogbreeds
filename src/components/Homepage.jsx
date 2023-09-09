@@ -38,43 +38,34 @@ const Homepage = () => {
 
   return (
     <div className="all">
-    <div className="headerBckgrnd">
-      {/* <img className='dogBreedsHeader' src="https://i.postimg.cc/Sxc45VCp/head.png" alt="Header" style={{width:"90%"}}/> */}
-    <h1 className='header'>Dog Breeds</h1>
-    <hr className='line'/>
-    </div>
+      <div className="headerBckgrnd">
+        <h1 className="header">Dog Breeds</h1>
+        <hr className="line" />
+      </div>
       {loading ? (
         <div>
           <ReactBootstrap.Spinner animation="border" variant="light" />
-          <p className='paragraphContent'>Content loading ...</p>
+          <p className="paragraphContent">Content loading ...</p>
         </div>
       ) : null}
       <div className="cardContainer">
         {breeds.map((breeds, index) => {
           return (
             <Card className="card" key={index}>
-
-            <Link className='link' key={index} to={`/doglist/${breeds.sys.id}`}>    
-              <Card.Body>
-
-              <Card.Title >
-                  
-                    {breeds.fields.breedName}
-                   
-                </Card.Title>
-                <Card.Img
-                  variant="bottom"
-                  className="cardImg"
-                  src={breeds.fields.dogImg[0].fields.file.url}
-                />
-              </Card.Body>
-              
-                    
-                   
+              <Link
+                className="link"
+                key={index}
+                to={`/doglist/${breeds.sys.id}`}
+              >
+                <Card.Body>
+                  <Card.Title>{breeds.fields.breedName}</Card.Title>
+                  <Card.Img
+                    variant="bottom"
+                    className="cardImg"
+                    src={breeds.fields.dogImg[0].fields.file.url}
+                  />
+                </Card.Body>
               </Link>
-
-
-                
             </Card>
           );
         })}
