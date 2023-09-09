@@ -6,17 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
-  
-
   return (
     <>
-
-
-  
-  <Routes>
-    <Route path="/" element={<Homepage/>} />
-    <Route path="/doglist/:index" element={<DogList />}/>
-  </Routes>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/doglist/:index" element={<DogList />} />
+        </Routes>
     </>
   );
 }
