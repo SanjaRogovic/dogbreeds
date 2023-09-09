@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Vast+Shadow&display=swap');
 
 #root {
@@ -41,7 +42,6 @@
   font-weight: bold;
   font-size: 20px;
 }
-
 .cardContainer{
   display: grid;
   gap: 2rem;
@@ -69,7 +69,7 @@
   font-size: 2.2rem !important;
 }
 
-/* .streched-link{
+.link{
   color: #3c2105 !important;
 }
 
