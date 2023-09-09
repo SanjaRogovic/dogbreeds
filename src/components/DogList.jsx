@@ -58,7 +58,7 @@ const DogList = (props) => {
     <div>
                  <div className='buttonContainer'>
                  <Button className="homebutton" variant="warning">
-                  <Link className='link2' key={index} to={`/`}> ←  BACK TO HOMEPAGE </Link>  
+                  <Link className='link2' key={index} to={`/dogbreeds`}> ←  BACK TO HOMEPAGE </Link>  
                  </Button>
                    </div> 
 
