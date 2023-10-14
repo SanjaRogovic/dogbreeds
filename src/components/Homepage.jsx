@@ -13,23 +13,23 @@ const Homepage = () => {
   const space = import.meta.env.VITE_SOME_SPACE;
   const accessToken = import.meta.env.VITE_SOME_TOKEN;
 
-  const getDogs = async () => {
-    try{
-      setLoading(true);
-      const client = contentful.createClient({
-        space: space,
-        accessToken: accessToken,
-      });
-      const response = await client.getEntries(); 
-      setBreeds(response.items);
-    }
-    catch (error){
-      console.error
-    }
-    finally {
-      setLoading(false)
-    }
-  };
+  // const getDogs = async () => {
+  //   try{
+  //     setLoading(true);
+  //     const client = contentful.createClient({
+  //       space: space,
+  //       accessToken: accessToken,
+  //     });
+  //     const response = await client.getEntries(); 
+  //     setBreeds(response.items);
+  //   }
+  //   catch (error){
+  //     console.error
+  //   }
+  //   finally {
+  //     setLoading(false)
+  //   }
+  // };
 
   useEffect(() => {
     getDogs();
