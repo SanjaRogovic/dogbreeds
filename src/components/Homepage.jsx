@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import * as contentful from "contentful";
 import Card  from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import * as ReactBootstrap from "react-bootstrap";
@@ -10,34 +9,27 @@ const Homepage = () => {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const space = import.meta.env.VITE_SOME_SPACE;
-  const accessToken = import.meta.env.VITE_SOME_TOKEN;
-
-  blablalala 
-
   
-  // const getDogs = async () => {
-  //   try{
-  //     setLoading(true);
-  //     const client = contentful.createClient({
-  //       space: space,
-  //       accessToken: accessToken,
-  //     });
-  //     const response = await client.getEntries(); 
-  //     setBreeds(response.items);
-  //   }
-  //   catch (error){
-  //     console.error
-  //   }
-  //   finally {
-  //     setLoading(false)
-  //   }
-  // };
+  const getDogs = async () => {
+    try{
+      setLoading(true);
+      const url = "http://localhost:3000/api/dogs"
+      const response = await fetch(url)
+      setBreeds(await response.json());
+    }
+    catch (error){
+      console.error
+    }
+    finally {
+      setLoading(false)
+    }
+  };
 
+  console.log(breeds);
+  
   useEffect(() => {
     getDogs();
   }, []);
-  // console.log(breeds)
 
   return (
     <div className="all">
@@ -56,27 +48,17 @@ const Homepage = () => {
           return (
             <Card className="card" key={index}>
 
-            <Link className='link' key={index} to={`/doglist/${breeds.sys.id}`}>    
+            <Link className='link' key={index} to={`/doglist/${breeds._id}`}>    
               <Card.Body>
 
-              <Card.Title >
-                  
-                    {breeds.fields.breedName}
-                   
-                </Card.Title>
+              <Card.Title >{breeds.breedName} </Card.Title>
                 <Card.Img
                   variant="bottom"
                   className="cardImg"
-                  src={breeds.fields.dogImg[0].fields.file.url}
+                  src={breeds.dogImg}
                 />
-              </Card.Body>
-              
-                    
-                   
-              </Link>
-
-
-                
+              </Card.Body>                 
+              </Link>  
             </Card>
           );
         })}
