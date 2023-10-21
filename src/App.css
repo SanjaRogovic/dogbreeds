@@ -13,6 +13,11 @@
   background-image: url("./assets/Dog-Paws.png");
 }
 
+#timer {
+  color: red;
+  font-size: 7rem;
+
+}
 .header{
   font-family: 'Vast Shadow', serif;
   text-shadow: -2px 0 #e9e8e2, 0 2px #e9e8e2, 2px 0 #e9e8e2, 0 -2px #e9e8e2;

@@ -38,6 +38,12 @@ const Start = () => {
       <Link className='link2' to={`/dogbreeds/login`}> LOGIN </Link>  
       </Button>
       </div>
+
+      <div>
+      <Button className="registerButton" variant="warning">
+      <Link className='link2' to={`/dogbreeds/register`}> REGISTER </Link>  
+      </Button>
+      </div>
     <div className="headerBckgrnd">
     <h1 className='header'>Dog Breeds</h1>
     <hr className='line'/>
