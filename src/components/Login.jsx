@@ -6,8 +6,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [message, setMessage] = useState(false)
-  // const [showElement,setShowElement] = useState(false)
+  const [message, setMessage] = useState(false);
+  const [showElement, setShowElement] = useState(false);
 
   const userLogin = async (credentials) => {
     try {
@@ -50,11 +50,19 @@ const Login = () => {
     console.log(response);
   };
 
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setShowElement(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div>
       <div>Login</div>
-
       <div>
         <form onSubmit={handleSubmit}>
           <label>Username:</label>
@@ -66,8 +74,6 @@ const Login = () => {
             placeholder="Username"
             required
           />
-
-          <br />
           <label>Password:</label>
           <input
             type="password"
@@ -77,12 +83,12 @@ const Login = () => {
             placeholder="Your password"
             required
           />
-
-          <br />
           <input type="submit" value="Submit" />
         </form>
-       
-        {error ? <p>{error} </p> : null} 
+
+        {error ? (
+          <div> {showElement ? <p id="timer">Error</p> : null} </div>
+        ) : null}
       </div>
     </div>
   );

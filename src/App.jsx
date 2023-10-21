@@ -12,10 +12,10 @@ function App() {
     <>
       <Routes>
         <Route path="/dogbreeds/start" element={<Start />} />
-        <Route path="/dogbreeds/homepage" element={<Homepage />} />
-        <Route path="/doglist/:index" element={<DogList />} />
         <Route path="/dogbreeds/login" element={<Login />} />
         <Route path="/dogbreeds/register" element={<Register />} />
+        <Route path="/dogbreeds/homepage" element={<Homepage />} />
+        <Route path="/doglist/:index" element={<DogList />} />
       </Routes>
     </>
   );
