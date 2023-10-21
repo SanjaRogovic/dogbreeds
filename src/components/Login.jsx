@@ -16,42 +16,36 @@ const Login = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const userLogin = async () => {
+    const userLogin = async (credentials) => {
         try {
-            const url = "http://localhost:3000/dogbreeds/auth/login";
-            const response = await fetch(url, { method: 'POST'}).then(response => response.json());
-          
-                console.log(response)
-
-            //   setUsername()
-            //   setPassword()
+            const url = "http://localhost:3000/api/auth/login";
+            const requestData = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({username: credentials.username, password: credentials.password })
+            };
+            const getResponse = await fetch(url, requestData);
+            const data = await getResponse.json();
+            console.log(data);
         } catch (err) {
             console.err
         }
-       
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // const token = await LoginUser({
-        //     userName,
-        //     password
-        // })
-        // setToken(token)
+        const response = await userLogin({
+            username,
+            password
+        })
+        console.log(response)
     }
 
-    
-
-    useEffect(() => {
-        userLogin();
-      }, []);
-
   return (
-    
-<div>
-<div>Login</div>
+    <div>
+      <div>Login</div>
 
-{/* <div>
+      {/* <div>
 <form action="/dogbreeds/api/auth/login" method="post">
                 <label for="register">Username:</label>
                 <input type="text" id="register" name="register" placeholder = "Username"/>
@@ -67,22 +61,33 @@ const Login = () => {
        </form> 
 </div> */}
 
-<div>
-<form onSubmit={handleSubmit} action="/dogbreeds/auth/login" method="post">
-                <label>Username:</label>
-                <input type="text" id="username" name="username" placeholder = "Username"/>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>Username:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            onChange={(e)=> setUsername(e.target.value)}
+            placeholder="Username"
+          />
 
-                <br />
-                <label>Password:</label>
-                <input type="password" id="password" name="password" placeholder = "Your password"/>
-                
-                <br />
-                <input type="submit" value="Submit"/>
-       </form> 
-</div>
-</div>
-    
-  )
+          <br />
+          <label>Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            onChange={(e)=> setPassword(e.target.value)}
+            placeholder="Your password"
+          />
+
+          <br />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  );
 }
 
 export default Login
