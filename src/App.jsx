@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/dogbreeds" element={<Homepage />} />
           <Route path="/doglist/:index" element={<DogList />} />
+          <Route path="/dogbreeds/login" element={<Login />} />
         </Routes>
     </>
   );

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import Card  from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import * as ReactBootstrap from "react-bootstrap";
 
@@ -33,6 +34,11 @@ const Homepage = () => {
 
   return (
     <div className="all">
+      <div>
+      <Button className="loginButton" variant="warning">
+      <Link className='link2' to={`/dogbreeds/login`}> LOGIN </Link>  
+      </Button>
+      </div>
     <div className="headerBckgrnd">
     <h1 className='header'>Dog Breeds</h1>
     <hr className='line'/>
