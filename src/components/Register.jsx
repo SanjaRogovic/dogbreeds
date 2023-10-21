@@ -26,7 +26,7 @@ const Register = () => {
       if (getResponse.ok) {
         const data = await getResponse.json();
         console.log(data);
-
+        
         navigate("/dogbreeds/login");
         return data;
       } else {
