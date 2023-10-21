@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [message, setMessage] = useState(false);
   const [showElement, setShowElement] = useState(false);
+  const navigate = useNavigate();
+
 
   const userLogin = async (credentials) => {
     try {
@@ -31,15 +31,24 @@ const Login = () => {
         return data;
       } else {
         const data = await getResponse.json();
-        setError("Error");
+        setError("Invalid username or password, please try again!");
+        setShowElement(true);
+       
         return data;
       }
     } catch (err) {
       console.error(err);
     }
   };
-
   console.log(error);
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+          setShowElement(false);
+        }, 3500);
+    return () => { clearTimeout(timer)};
+  }, [showElement]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,45 +59,46 @@ const Login = () => {
     console.log(response);
   };
 
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setShowElement(true);
-    }, 2000);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
 
+  
   return (
     <div>
-      <div>Login</div>
+      
+      
+
       <div>
-        <form onSubmit={handleSubmit}>
-          <label>Username:</label>
+        <form onSubmit={handleSubmit} className="loginForm">
+        <p className="loginRegisterTitle">Login</p>
+        {showElement ? (<div class="popup"><p id="timer" class="popuptext"> {error} </p></div>) : null}
+
+          <label className="loginLabel">Username:</label>
           <input
             type="text"
             id="username"
+            className="login-text-input"
             name="username"
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             required
           />
-          <label>Password:</label>
+          <label className="loginLabel">Password:</label>
           <input
             type="password"
             id="password"
+            className="login-text-input"
             name="password"
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Your password"
             required
           />
-          <input type="submit" value="Submit" />
+          <input type="submit" className="loginButton" value="LOG ME IN" />
         </form>
 
-        {error ? (
-          <div> {showElement ? <p id="timer">Error</p> : null} </div>
-        ) : null}
+       
+
+      
+ 
       </div>
     </div>
   );
