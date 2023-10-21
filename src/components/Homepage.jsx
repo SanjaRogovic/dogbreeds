@@ -34,11 +34,6 @@ const Homepage = () => {
 
   return (
     <div className="all">
-      <div>
-      <Button className="loginButton" variant="warning">
-      <Link className='link2' to={`/dogbreeds/login`}> LOGIN </Link>  
-      </Button>
-      </div>
     <div className="headerBckgrnd">
     <h1 className='header'>Dog Breeds</h1>
     <hr className='line'/>
