@@ -21,10 +21,17 @@ const Login = () => {
       };
       const getResponse = await fetch(url, requestData);
       console.log(getResponse);
+      
 
       if (getResponse.ok) {
         const data = await getResponse.json();
-        console.log(data);
+        console.log(data);        
+        
+        const userToken = data.token;
+        // const setToken(userToken) {
+        sessionStorage.setItem('token', JSON.stringify(userToken))
+        // }
+
 
         navigate("/dogbreeds/homepage");
         return data;

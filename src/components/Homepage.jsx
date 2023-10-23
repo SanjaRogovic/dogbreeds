@@ -8,6 +8,7 @@ import * as ReactBootstrap from "react-bootstrap";
 const Homepage = () => {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState()
 
   const getDogs = async () => {
     try {
