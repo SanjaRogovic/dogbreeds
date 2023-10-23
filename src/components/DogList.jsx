@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Rating from '@mui/material/Rating';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Rating from "@mui/material/Rating";
+import { Link } from "react-router-dom";
 
 import * as ReactBootstrap from "react-bootstrap";
-
 
 const DogList = (props) => {
   const [name, setName] = useState("");
@@ -46,7 +45,7 @@ const DogList = (props) => {
     <div>
       <div className="buttonContainer">
         <Button className="homebutton" variant="warning">
-          <Link className="link2" key={index} to={`/dogbreeds`}>
+          <Link className="link2" key={index} to={`/dogbreeds/homepage`}>
             {" "}
             ← BACK TO HOMEPAGE{" "}
           </Link>
@@ -70,7 +69,7 @@ const DogList = (props) => {
             <br />
             <div className="rating">
               Sport Need:
-              <Rating name="read-only" value={ratingSport} readOnly /> 
+              <Rating name="read-only" value={ratingSport} readOnly />
               <br />
               Affectionate Level:
               <Rating name="read-only2" value={affectionLevel} readOnly />
@@ -82,5 +81,4 @@ const DogList = (props) => {
   );
 };
 
-export default DogList
-
+export default DogList;

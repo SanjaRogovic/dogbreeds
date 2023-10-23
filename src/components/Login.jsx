@@ -8,7 +8,6 @@ const Login = () => {
   const [showElement, setShowElement] = useState(false);
   const navigate = useNavigate();
 
-
   const userLogin = async (credentials) => {
     try {
       const url = "http://localhost:3000/api/auth/login";
@@ -33,7 +32,7 @@ const Login = () => {
         const data = await getResponse.json();
         setError("Invalid username or password, please try again!");
         setShowElement(true);
-       
+
         return data;
       }
     } catch (err) {
@@ -44,11 +43,12 @@ const Login = () => {
 
   useEffect(() => {
     let timer = setTimeout(() => {
-          setShowElement(false);
-        }, 3500);
-    return () => { clearTimeout(timer)};
+      setShowElement(false);
+    }, 3500);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [showElement]);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,18 +59,19 @@ const Login = () => {
     console.log(response);
   };
 
-
-
-  
   return (
     <div>
-      
-      
-
       <div>
         <form onSubmit={handleSubmit} className="loginForm">
-        <p className="loginRegisterTitle">Login</p>
-        {showElement ? (<div class="popup"><p id="timer" class="popuptext"> {error} </p></div>) : null}
+          <p className="loginRegisterTitle">Login</p>
+          {showElement ? (
+            <div class="popup">
+              <p id="timer" class="popuptext">
+                {" "}
+                {error}{" "}
+              </p>
+            </div>
+          ) : null}
 
           <label className="loginLabel">Username:</label>
           <input
@@ -94,11 +95,6 @@ const Login = () => {
           />
           <input type="submit" className="loginButton" value="LOG ME IN" />
         </form>
-
-       
-
-      
- 
       </div>
     </div>
   );

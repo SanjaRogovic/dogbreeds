@@ -26,7 +26,7 @@ const Register = () => {
       if (getResponse.ok) {
         const data = await getResponse.json();
         console.log(data);
-        
+
         navigate("/dogbreeds/login");
         return data;
       } else {
@@ -52,9 +52,8 @@ const Register = () => {
   return (
     <div>
       <div>
-
         <form onSubmit={handleSubmit} className="registerForm">
-        <p className="loginRegisterTitle">Registration</p>
+          <p className="loginRegisterTitle">Registration</p>
 
           <label className="registerLabel">Username:</label>
           <input
@@ -65,7 +64,8 @@ const Register = () => {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username"
             required
-          /><br/>
+          />
+          <br />
           <label className="registerLabel">Password:</label>
           <input
             type="password"
@@ -75,7 +75,8 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Your password"
             required
-          /><br/>
+          />
+          <br />
           <label className="registerLabel">Email:</label>
           <input
             type="email"
@@ -85,10 +86,10 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email"
             required
-          /><br/>
+          />
+          <br />
           <input type="submit" className="registerButton" value="REGISTER" />
         </form>
-
         {error ? <p>{error} </p> : null}
       </div>
     </div>
