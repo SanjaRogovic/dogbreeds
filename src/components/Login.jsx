@@ -30,7 +30,9 @@ const Login = () => {
 
         sessionStorage.setItem("token", JSON.stringify(userToken));
 
-        navigate("/dogbreeds/homepage");
+        if(userToken){
+          navigate("/dogbreeds/homepage")
+        }
         return data;
       } else {
         const data = await getResponse.json();
