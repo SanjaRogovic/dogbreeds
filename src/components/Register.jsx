@@ -10,7 +10,7 @@ const Register = () => {
 
   const userRegister = async (credentials) => {
     try {
-      const url = "http://localhost:3000/api/auth/register";
+      const url = "http://localhost:3000/api/auth/dogbreeds/register";
       const requestData = {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -10,16 +10,14 @@ const Homepage = () => {
   const [loading, setLoading] = useState(false);
 
   const getDogs = async () => {
-    const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem("token");
     // console.log(token)
 
     try {
       setLoading(true);
       const url = "http://localhost:3000/api/dogs";
-
-      const headers = { 'Authorization': `${token}` }; // auth header with bearer token
-      const response = await fetch(url, {headers} );
-
+      const headers = { "Authorization": `${token}` };
+      const response = await fetch(url, { headers });
       // console.log(response)
 
       setBreeds(await response.json());

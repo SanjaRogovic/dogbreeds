@@ -8,10 +8,9 @@ const Login = () => {
   const [showElement, setShowElement] = useState(false);
   const navigate = useNavigate();
 
-
   const userLogin = async (credentials) => {
     try {
-      const url = "http://localhost:3000/api/auth/login";
+      const url = "http://localhost:3000/api/auth/dogbreeds/login";
       const requestData = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -22,15 +21,14 @@ const Login = () => {
       };
       const getResponse = await fetch(url, requestData);
       console.log(getResponse);
-      
 
       if (getResponse.ok) {
         const data = await getResponse.json();
-        console.log(data);        
-        
+        console.log(data);
+
         const userToken = data.token;
-      
-        sessionStorage.setItem('token', JSON.stringify(userToken))
+
+        sessionStorage.setItem("token", JSON.stringify(userToken));
 
         navigate("/dogbreeds/homepage");
         return data;
@@ -55,7 +53,6 @@ const Login = () => {
       clearTimeout(timer);
     };
   }, [showElement]);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
