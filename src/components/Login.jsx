@@ -8,6 +8,7 @@ const Login = () => {
   const [showElement, setShowElement] = useState(false);
   const navigate = useNavigate();
 
+
   const userLogin = async (credentials) => {
     try {
       const url = "http://localhost:3000/api/auth/login";
@@ -28,10 +29,8 @@ const Login = () => {
         console.log(data);        
         
         const userToken = data.token;
-        // const setToken(userToken) {
+      
         sessionStorage.setItem('token', JSON.stringify(userToken))
-        // }
-
 
         navigate("/dogbreeds/homepage");
         return data;
@@ -56,6 +55,7 @@ const Login = () => {
       clearTimeout(timer);
     };
   }, [showElement]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

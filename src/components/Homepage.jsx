@@ -8,13 +8,20 @@ import * as ReactBootstrap from "react-bootstrap";
 const Homepage = () => {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [response, setResponse] = useState()
 
   const getDogs = async () => {
+    const token = sessionStorage.getItem('token');
+    // console.log(token)
+
     try {
       setLoading(true);
       const url = "http://localhost:3000/api/dogs";
-      const response = await fetch(url);
+
+      const headers = { 'Authorization': `${token}` }; // auth header with bearer token
+      const response = await fetch(url, {headers} );
+
+      // console.log(response)
+
       setBreeds(await response.json());
     } catch (error) {
       console.error;
